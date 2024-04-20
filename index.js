@@ -15,6 +15,8 @@ cron.schedule("0 0 * * *", clearOldBookings);
 
 app.use(
   cors({
+    methods:'GET,POST,PUT,PATCH,DELETE,OPTIONS',
+    optionsSuccessStatus:200,
     credentials: true,
     origin: CLIENT_URL,
   })
