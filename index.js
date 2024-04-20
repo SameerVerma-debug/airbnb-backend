@@ -1,4 +1,3 @@
-const PORT = 4000;
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -8,8 +7,8 @@ const connectDB = require("./config/connectdb");
 const path = require("path");
 const cron = require("node-cron");
 const clearOldBookings = require("./utils/clearOldBookings");
-const CLIENT_URL = "http://localhost:5173"
-
+const CLIENT_URL = "http://localhost:5173";
+require("dotenv").config();
 connectDB();
 
 cron.schedule("0 0 * * *", clearOldBookings);
@@ -42,7 +41,7 @@ app.use("/bookings", require("./routes/bookings"));
 
 mongoose.connection.once("open", () => {
   console.log("Database Connected");
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
+  app.listen(process.env.PORT, () => {
+    console.log(`Server started on port ${process.env.PORT}`);
   });
 });
