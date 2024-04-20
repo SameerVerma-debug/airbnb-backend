@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const handleEditAccommodation = async (req, res) => {
   const {
-    userId,
+    // userId,
     id,
     title,
     address,
@@ -24,9 +24,9 @@ const handleEditAccommodation = async (req, res) => {
 
   try{
     const foundAccommodation = await Accommodation.findById(id);
-    if (userId !== foundAccommodation.owner.toString()) {
-      return res.sendStatus(403);
-    }
+    // if (userId !== foundAccommodation.owner.toString()) {
+    //   return res.sendStatus(403);
+    // }
   
     foundAccommodation.set({
       title,

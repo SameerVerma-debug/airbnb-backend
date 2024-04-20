@@ -32,7 +32,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/search", require("./routes/search"));
 app.use("/autocomplete", require("./routes/autocomplete"));
 
-app.use(require("./middleware/verifyJWT"));
+//app.use(require("./middleware/verifyJWT"));
 app.use("/upload-by-link", require("./routes/uploadByLink"));
 app.use("/upload", require("./routes/upload"));
 app.use("/profile", require("./routes/profile"));
