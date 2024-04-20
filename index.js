@@ -13,7 +13,7 @@ connectDB();
 
 cron.schedule("0 0 * * *", clearOldBookings);
 
-const whitelist = [ CLIENT_URL]; //sites allowed to access this server
+const whitelist = [ CLIENT_URL,"http://localhost:5174"]; //sites allowed to access this server
 const corsOptions = {
   methods: "GET,POST,PUT,PATCH,DELETE,OPTIONS",
   optionsSuccessStatus: 200,
