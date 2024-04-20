@@ -13,13 +13,23 @@ connectDB();
 
 cron.schedule("0 0 * * *", clearOldBookings);
 
+const whitelist = [ CLIENT_URL]; //sites allowed to access this server
+const corsOptions = {
+  methods: "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+  optionsSuccessStatus: 200,
+  credentials: true,
+  origin: (origin, callback) => {
+    if (!origin || whitelist.indexOf(origin) != -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+
 app.use(
-  cors({
-    methods:'GET,POST,PUT,PATCH,DELETE,OPTIONS',
-    optionsSuccessStatus:200,
-    credentials: true,
-    origin: CLIENT_URL,
-  })
+  cors(corsOptions)
 );
 
 app.use(express.urlencoded({ extended: true }));
