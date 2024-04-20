@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const handleAddAccommodation = async (req, res) => {
   const {
-    // userId,
+    userId,
     title,
     address,
     photos,
@@ -18,7 +18,7 @@ const handleAddAccommodation = async (req, res) => {
 
   try{
     await Accommodation.create({
-      // owner: userId,
+      owner: userId,
       title,
       address,
       photos,

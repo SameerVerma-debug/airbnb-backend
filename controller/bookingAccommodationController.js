@@ -5,7 +5,7 @@
 const Booking = require("../model/Booking");
 
 const handleBookingAccommodation = async (req, res) => {
-  const { accommodation, checkInDate, checkOutDate, noOfGuests, price } =
+  const { accommodation, checkInDate, checkOutDate, noOfGuests, userId, userEmail, price } =
     req.body;
 
   const bookings = await Booking.find({
@@ -33,8 +33,8 @@ const handleBookingAccommodation = async (req, res) => {
 
   try{
     const newBooking = await Booking.create({
-      // userId,
-      // userEmail,
+      userId,
+      userEmail,
       accommodation,
       checkInDate: checkIn,
       checkOutDate: checkOut,
