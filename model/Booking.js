@@ -7,14 +7,14 @@ const bookingSchema = new Schema({
     required: true,
     ref:"Accommodation"
   },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-  userEmail: {
-    type: String,
-    required: true,
-  },
+  // userId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  // },
+  // userEmail: {
+  //   type: String,
+  //   required: true,
+  // },
   
   checkInDate: {
     type: Date,
