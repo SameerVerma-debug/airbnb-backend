@@ -38,7 +38,7 @@ app.use("/upload-by-link", require("./routes/uploadByLink"));
 app.use("/upload", require("./routes/upload"));
 app.use("/profile", require("./routes/profile"));
 app.use("/logout", require("./routes/logout"));
-app.use("/user-accommodations", require("./routes/userAccommodations"));
+app.use("/useraccommodations", require("./routes/userAccommodations"));
 app.use("/bookings", require("./routes/bookings"));
 
 mongoose.connection.once("open", () => {
