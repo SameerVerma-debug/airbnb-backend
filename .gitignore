@@ -1,0 +1,11 @@
+# Node.js files
+node_modules/
+npm-debug.log
+
+# Local development files
+.env
+.DS_Store
+.vscode/
+
+# Build output
+dist/
