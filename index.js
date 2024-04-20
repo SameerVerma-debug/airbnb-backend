@@ -7,7 +7,7 @@ const connectDB = require("./config/connectdb");
 const path = require("path");
 const cron = require("node-cron");
 const clearOldBookings = require("./utils/clearOldBookings");
-const CLIENT_URL = "https://airbnb-1-zjgh.onrender.com/";
+const CLIENT_URL = "http://localhost:5173";
 require("dotenv").config();
 connectDB();
 
