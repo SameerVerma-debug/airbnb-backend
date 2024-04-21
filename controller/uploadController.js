@@ -1,23 +1,17 @@
-const path = require('path');
-const fs = require('fs');
-
-const basePath = path.join(__dirname,"..","uploads/")
+const cloudinary = require("../cloudinary/cloudinary");
 
 const handleUpload = async (req, res) => {
-  const uploadedFiles = [];
-  for (let i = 0; i < req.files.length; i++) {
-    const { filename, originalname } = req.files[i];
-    const parts = originalname.split(".");
-    const ext = parts[parts.length - 1];
-    const filenameWithExt = filename + "." + ext;
-    fs.renameSync(
-      path.join(basePath + filename),
-      path.join(basePath + filenameWithExt)
-    );
-    uploadedFiles.push(filenameWithExt);
+  const { photo, userId } = req.body;
+  try {
+    const result = await cloudinary.uploader.upload(photo, {
+      upload_preset: "unsigned_upload",
+      public_id: `${userId + Date.now()}`,
+      allowed_formats: ["png", "jpg", "jpeg", "svg", "ico", "webp", "jfif"],
+    });
+    res.status(200).json(result?.public_id);
+  } catch (err) {
+    res.sendStatus(500);
   }
-  console.log(req.files.length);
-  res.json(uploadedFiles);
 };
 
 module.exports = handleUpload;

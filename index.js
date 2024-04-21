@@ -36,7 +36,7 @@ app.use("/search", require("./routes/search"));
 app.use("/autocomplete", require("./routes/autocomplete"));
 
 app.use(require("./middleware/verifyJWT"));
-app.use("/upload-by-link", require("./routes/uploadByLink"));
+//app.use("/upload-by-link", require("./routes/uploadByLink"));
 app.use("/upload", require("./routes/upload"));
 app.use("/profile", require("./routes/profile"));
 app.use("/logout", require("./routes/logout"));
