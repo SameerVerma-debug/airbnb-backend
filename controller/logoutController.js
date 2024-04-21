@@ -1,11 +1,8 @@
-const handleLogout = (req,res) => {
-  const {token} = req.cookies;
-
-  if(token){
-    return  res.status(202).clearCookie('token').json({message:"Cookie Cleared"});
-  }
-
-  return res.json(null);
-}
+const handleLogout = (req, res) => {
+    res
+      .clearCookie("jwt")
+      .json({ message: "Cookie Cleared" });
+  
+};
 
 module.exports = handleLogout;

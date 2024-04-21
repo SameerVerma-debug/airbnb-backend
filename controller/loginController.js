@@ -25,9 +25,9 @@ const handleLogin = async (req, res) => {
       process.env.JWT_SECRET,
       {}
     );
-    res
-      .cookie("token", token)
-      .json(foundUser);
+
+    res.cookie('jwt',token);
+    res.json({foundUser,token});
   } catch (err) {
     res.status(409).json({ message: "Login not successful" });
   }

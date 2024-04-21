@@ -2,9 +2,10 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const verifyJWT = (req,res,next) => {
-  const {token} = req.cookies;
+  const token = req?.cookies?.jwt || req?.headers['authorization'];
+  //console.log(token);
   if(!token){
-    return res.json(null);
+    return res.sendStatus(403);
   }
 
   jwt.verify(
