@@ -3,6 +3,7 @@ const imageDownlaoder = require('image-downloader');
 
 const handleUploadByLink = async(req,res) => {
   const {link} = req.body;
+  console.log(link);
   if(!link){
     res.status(404).json({message:"Can't get Image"});
     return;
@@ -14,6 +15,7 @@ const handleUploadByLink = async(req,res) => {
   }
   try{
     await imageDownlaoder.image(options);
+    console.log(newName);
     res.json(newName);
   }
   catch(err){

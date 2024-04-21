@@ -5,7 +5,7 @@ const basePath = path.join(__dirname,"..","uploads/")
 
 const handleUpload = async (req, res) => {
   const uploadedFiles = [];
-  for (let i = 0; i < req.files?.length; i++) {
+  for (let i = 0; i < req.files.length; i++) {
     const { filename, originalname } = req.files[i];
     const parts = originalname.split(".");
     const ext = parts[parts.length - 1];
@@ -16,6 +16,7 @@ const handleUpload = async (req, res) => {
     );
     uploadedFiles.push(filenameWithExt);
   }
+  console.log(req.files.length);
   res.json(uploadedFiles);
 };
 
