@@ -26,7 +26,6 @@ const handleLogin = async (req, res) => {
       {}
     );
 
-    console.log(token);
     res.cookie('jwt',token);
     res.json({foundUser,token});
   } catch (err) {

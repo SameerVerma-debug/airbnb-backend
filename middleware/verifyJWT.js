@@ -3,7 +3,6 @@ require('dotenv').config();
 
 const verifyJWT = (req,res,next) => {
   const token = req.cookies.jwt || req.headers['authorization'];
-  console.log(token);
   if(!token){
     return res.sendStatus(403);
   }

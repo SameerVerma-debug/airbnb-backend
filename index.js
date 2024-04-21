@@ -7,6 +7,7 @@ const connectDB = require("./config/connectdb");
 const path = require("path");
 const cron = require("node-cron");
 const clearOldBookings = require("./utils/clearOldBookings");
+
 const CLIENT_URL = "https://airbnb-frontend-tau.vercel.app";
 require("dotenv").config();
 connectDB();
