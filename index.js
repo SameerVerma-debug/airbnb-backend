@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -6,24 +7,25 @@ const mongoose = require("mongoose");
 const connectDB = require("./config/connectdb");
 const path = require("path");
 const cron = require("node-cron");
+const bodyParser = require('body-parser');
 const clearOldBookings = require("./utils/clearOldBookings");
-
-const CLIENT_URL = "https://airbnb-frontend-tau.vercel.app";
-require("dotenv").config();
-connectDB();
+const cloudinary = require('./cloudinary/cloudinary');
+//https://airbnb-frontend-tau.vercel.app
+connectDB(); 
 
 cron.schedule("0 0 * * *", clearOldBookings);
-
+        
 app.use(
   cors({
-    origin:CLIENT_URL,
+    origin:process.env.CLIENT_URL,
     credentials:true,
     methods:["GET","POST","PUT","DELETE"]
   })
 );
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.urlencoded({ extended: true,limit:'50mb' }));
+app.use(express.json({limit:'50mb'}));
+app.use(bodyParser.json({limit:'50mb'}))
 app.use(cookieParser());
 
 app.use("/register", require("./routes/auth/register"));
