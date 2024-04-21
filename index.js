@@ -10,7 +10,7 @@ const cron = require("node-cron");
 const bodyParser = require('body-parser');
 const clearOldBookings = require("./utils/clearOldBookings");
 const cloudinary = require('./cloudinary/cloudinary');
-//https://airbnb-frontend-tau.vercel.app
+
 connectDB(); 
 
 cron.schedule("0 0 * * *", clearOldBookings);
